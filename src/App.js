@@ -1,24 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import PixivList from './components/Pixiv/PixivList';
+import { BrowserRouter as Router, Link, Route, Switch } from 'react-router-dom'
+import NewPixiv from './components/Pixiv/NewPixiv';
+import EditPixiv from './components/Pixiv/EditPixiv';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Router>
+        <div className="bg-indigo-500 w-full px-4 py-3">
+          <Link to="/" className="text-gray-50 font-bold text-2xl">Aninotes</Link>
+        </div>
+        <Switch>
+          <Route exact path="/" component={PixivList} />
+          <Route exact path="/add" component={NewPixiv} />
+          <Route path="/edit/:id" component={EditPixiv} />
+        </Switch>
+      </Router>
+    </>
   );
 }
 
